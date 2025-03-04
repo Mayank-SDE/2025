@@ -736,7 +736,7 @@
             System.out.println("s string length() is greater than 5");
         }
     ```
-4. Relational Operators or Comparision Operators
+4. Relational Operators or Comparison Operators
  ```java
         package CIP;
         public class Test {
@@ -777,4 +777,34 @@
  - In Java, positive numbers are stored in the simple binary form i.e. decimal to binary conversion.
  - In Java, negative numbers are stored in 2's compliment form.
  - Range of int : -2<sup>31</sup> to 2<sup>31</sup>-1
- - Representation of -x = 2<sup>32</sup>-x 
+ - Representation of -x = 2<sup>32</sup>-x (2's compliment representation of negative number).
+ - 2<sup>32</sup>-1 is 32 times 1. Therefore, 2<sup>3</sup> -1 is 3 times 1.
+ - Now, When we perform Bitwise NOT ~ operator in 1 then its binary representation is 000....(31 times)1.
+ - ~x binary representation will be 111... (31 times)0 which we can is equivalent to 2<sup>32</sup>-1-1 which is 2<sup>32</sup>-2.
+ - Now, according to the formula representation of ~x is 2<sup>32</sup>-x. Therefore, 2<sup>32</sup>-2 is binary representation of -2.
+  ```java
+        package CIP;
+        public class Test {
+            public static void main(String[] args) {
+            
+                int x = 1;
+                System.out.println(~x); // Output -2
+            }
+        }
+  ``` 
+- Let's try to solve this for x = 5, System.out.println(~x);
+- Binary representation of x = 5 i.e. 000... (32 times)101
+- Binary representation of ~x will be 111... (32 times)010, which is 2<sup>32</sup>-4-1 which is 2<sup>32</sup>-5, which is -5.
+- Therefore, the answer would be -5. 
+```java
+    package CIP;
+
+public class Test {
+    public static void main(String[] args) {
+
+        int x = 5;
+        System.out.println(~x); // Output -6
+    }
+}
+
+```
