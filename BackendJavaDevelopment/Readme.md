@@ -40,8 +40,25 @@
     // object created inside the heap section.
 ```
 - Address are stored inside the form of Hexadecimal values.
-- All the objects are given the memory in the two forms :
+- All the variables, functions, local variables and objects are given the memory in the two forms inside the RAM :
     1. Stack
         - All the functions and all the local variables inside it are going to be stored inside the stack.
         - Push and Pop operations are performed on stack following the LIFO i.e. Last in First Out pattern.
     2. Heap
+- To access any method or variable of class without creating the object we can make that variable or method static.
+
+### Data types
+1. **Primitive Types**
+    1. int - 4 bytes - 32 bits - 2<sup>31</sup>-1
+    2. char - 
+    3. byte
+    4. short
+    5. double
+    6. float
+2. **Non-Primitive Types**
+    1. String
+    2. Integer
+    3. Float
+    4. Double
+    5. Long
+    
