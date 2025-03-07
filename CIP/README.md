@@ -751,60 +751,381 @@
             }
         }
  ```
- 5. Bitwise Operator in Java
- ```java
-    package CIP;
-    public class Test {
-        public static void main(String[] args) {
-            int x = 3, y = 6;
-            // Bitiwse And operator
-            System.out.println(x & y);
-            // Bitiwse OR Operator
-            System.out.println(x|y);
-            // Bitwise XOR operator
-            // Outputs 1 when two bits are different
-            // Outputs 0 when two bits are same
-            System.out.println(x^y);
-            // Bitiwse NOT or 1's compliment
-            // It converts the decimal number into the binary 
-            // and inverts all the binary number 0 to 1 and 1 to 0
-            System.out.println(~x);
-
-        }
-    }
+5. Bitwise Operator in Java
+    1. **Bitwise NOT**
+     ```java
+       package CIP;
+       public class Test {
+           public static void main(String[] args) {
+               int x = 3, y = 6;
+               // Bitiwse And operator
+               System.out.println(x & y);
+               // Bitiwse OR Operator
+               System.out.println(x|y);
+               // Bitwise XOR operator
+               // Outputs 1 when two bits are different
+               // Outputs 0 when two bits are same
+               System.out.println(x^y);
+               // Bitiwse NOT or 1's compliment
+               // It converts the decimal number into the binary 
+               // and inverts all the binary number 0 to 1 and 1 to 0
+               System.out.println(~x);
     
- ```
- - In Java, positive numbers are stored in the simple binary form i.e. decimal to binary conversion.
- - In Java, negative numbers are stored in 2's compliment form.
- - Range of int : -2<sup>31</sup> to 2<sup>31</sup>-1
- - Representation of -x = 2<sup>32</sup>-x (2's compliment representation of negative number).
- - 2<sup>32</sup>-1 is 32 times 1. Therefore, 2<sup>3</sup> -1 is 3 times 1.
- - Now, When we perform Bitwise NOT ~ operator in 1 then its binary representation is 000....(31 times)1.
- - ~x binary representation will be 111... (31 times)0 which we can is equivalent to 2<sup>32</sup>-1-1 which is 2<sup>32</sup>-2.
- - Now, according to the formula representation of ~x is 2<sup>32</sup>-x. Therefore, 2<sup>32</sup>-2 is binary representation of -2.
-  ```java
+           }
+       }
+       
+     ```
+     - In Java, positive numbers are stored in the simple binary form i.e. decimal to binary conversion.
+     - In Java, negative numbers are stored in 2's compliment form.
+     - Range of int : -2<sup>31</sup> to 2<sup>31</sup>-1
+     - Representation of -x = 2<sup>32</sup>-x (2's compliment representation of negative number).
+     - 2<sup>32</sup>-1 is 32 times 1. Therefore, 2<sup>3</sup> -1 is 3 times 1.
+     - Now, When we perform Bitwise NOT ~ operator in 1 then its binary representation is 000....(31 times)1.
+     - ~x binary representation will be 111... (31 times)0 which we can is equivalent to 2<sup>32</sup>-1-1 which is 2<sup>32</sup>-2.
+     - Now, according to the formula representation of ~x is 2<sup>32</sup>-x. Therefore, 2<sup>32</sup>-2 is binary representation of -2.
+      ```java
+           package CIP;
+           public class Test {
+               public static void main(String[] args) {
+                
+                   int x = 1;
+                   System.out.println(~x); // Output -2
+               }
+           }
+      ``` 
+      - Let's try to solve this for x = 5, System.out.println(~x);
+      -  Binary representation of x = 5 i.e. 000... (32 times)101
+      -  Binary representation of ~x will be 111... (32 times)010, which is 2<sup>32</sup>-4-1 which is 2<sup>32</sup>-5, which is -5.
+      -  Therefore, the answer would be -5. 
+      ```java
+       package CIP;
+       public class Test {
+           public static void main(String[] args) {
+            
+               int x = 5;
+               System.out.println(~x); // Output -6
+           }
+       }
+     ```
+     - We can use the bitwise not operator for obtaining the 2's compliment of the number.
+       ```java
+           public class Test{
+               public static void main(String[] args)
+               {
+                   int num=5;
+                   int flippedBits=~num;
+                   int twoSCompliment=flippedBits+1;
+                   System.out.println(twoSCompliment);
+               }
+           }
+       ```
+       - For a positive number the left-most binary digit is always 0 and for negative numbers the left most binary digit is always 1
+       - Bitwise NOT operator inverts all the bits 1 to 0 and 0 to 1.
+       - for any number x the ~x = - (x+1) and ~-x = x-1
+    2. **Left Shift Operator <<**
+        - Left shift operator is a binary operator which takes the number whose binary representation is to be shifted and takes another number   which tells for how many times it is to be shifted.
+        - After binary representation whatever binary representation you get, it returns the corresponding value.
+        ```java
+         // binary representation of x -> 000....0011
+         // binary representation of x>>1 -> 000....0110
+         // binary representation of x>>1 -> 000....1100
+         // binary representation of x>>1 -> 000...11000
+        ```
+        - It is equivalent to multiplying the number with 2<sup>n</sup>
+        - Negative number -x(decimal) are represented as 2<sup>32</sup> - x (binary representation)i.e. -1 is 
+             ```java
+               package CIP;
+                public class Test {
+                 public static void main(String[] args) {
+                 
+                     int x = -1;
+                     System.out.println(x << 1);
+                     // Output -2
+                 }
+              }
+               // For any number x the x << k will be x * 2^k
+            ```
+     - Left shit operator works as multiplication with 2.
+   3. **Right Shift Operator >>**
+      - You shift all the digits to the right by the given position and zero is added as leading zero.
+      ```java
+            package CIP;
+            public class Test {
+                public static void main(String[] args) {
+                
+                    int x = 33;
+                    System.out.println(x >> 1);
+                    // Output 16
+                }
+            }
+      ```
+      - It is more like for any number x right shifted by k i.e. x >> k means x / 2<sup>k</sup>
+      - for binary representation of 000.....110 >> 1 it becomes 000.....011
+      - **Signed Right shift for Negative numbers**
+      - There is one more type of right shift operator which is signed right shift which treats negative and positive number differently.
+      - In case of positive it was filling the leading bits with 0.
+      - In case of negative it fills the leading bits with 1.
+      ```java
+            package CIP;
+            public class Test {
+                public static void main(String[] args) {
+                
+                    int x = -33;
+                    System.out.println(x >> 1);
+                    // Output -17
+                }
+            }
+      ```
+      - For binary representation of 111......110(32 times) >> 1 it becomes 111.......111(32 times) because since it is a negative number so the leading bits with 1 are added.
+      - Since, this right shift operator is treating the negative and positive numbers differently thus it is also called as signed right shift operator.
+      - If you right shift -2 with any value it will always be -1.
+    4. **Unsigned Right Shift Operator >>>**
+        - This operator also shifts the bits to the right according to the given number of position.
+        - The difference between the unsigned right shift and signed right shift is that the signed right shift which we were using earlier makes sure that the sign remains same that is it was adding the 1 leading bits in case of the negative numbers.
+        - But in unsigned right shift no matter what it will always add the 0 as the leading bits. However, this difference is only for the negative numbers and for positive numbers they will behave the same.
+        ```java
+            package CIP;
+            public class Test {
+                public static void main(String[] args) {
+                
+                    int x = -33;
+                    System.out.println(x >>> 1);
+                    // Output 2147483631   
+            }
+            }
+        ```
+        - For binary representation of 111.....110 >>> 1 it becomes 011.......111. i.e. the leading bits are 0.
+#### Find nth term of Arithmetic series
+- INPUT -> a=2, d = 1, N = 5
+- OUTPUT -> 6
+    ```java
         package CIP;
+
+        import java.util.Scanner;
+
         public class Test {
             public static void main(String[] args) {
-            
-                int x = 1;
-                System.out.println(~x); // Output -2
+
+                Scanner sc = new Scanner(System.in);
+                System.out.print("Enter the first term a : ");
+                int a = sc.nextInt();
+                System.out.print("Enter the value of difference d : ");
+                int d = sc.nextInt();
+                System.out.print("Enter the value of N : ");
+                int N = sc.nextInt();
+                int ans = a + (N - 1) * d;
+                System.out.println("The nth term is : " + ans);
+
             }
         }
-  ``` 
-- Let's try to solve this for x = 5, System.out.println(~x);
-- Binary representation of x = 5 i.e. 000... (32 times)101
-- Binary representation of ~x will be 111... (32 times)010, which is 2<sup>32</sup>-4-1 which is 2<sup>32</sup>-5, which is -5.
-- Therefore, the answer would be -5. 
+
+    ```
+#### Find the nth Term of Geometric Progression
+- A series in a G.P when you have common ratio between two terms.
+- INPUT -> a = 2, r = 2, N = 4
+- OUTPUT -> 16
+- The ratio between any two consecutive elements will be same.
+- To find the nth term in a G.P series is n*r<sup>n-1</sup>.
+ ```java
+package CIP;
+
+import java.util.Scanner;
+
+public class Test {
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter the first term a : ");
+        int a = sc.nextInt();
+        System.out.print("Enter the value of difference r : ");
+        int r = sc.nextInt();
+        System.out.print("Enter the value of N : ");
+        int N = sc.nextInt();
+        int ans = a * (int) Math.pow(r, N - 1);
+        System.out.println("The nth term is : " + ans);
+
+    }
+}
+
+ ```
+#### Sum of n natural numbers
+- INPUT -> n = 3
+- OUTPUT -> 6 (1+2+3)
+    ```java
+        package CIP;
+
+    import java.util.Scanner;
+
+    public class Test {
+        public static void main(String[] args) {
+
+            Scanner sc = new Scanner(System.in);
+            System.out.print("Enter the term n : ");
+            int n = sc.nextInt();
+            System.out.println((n + 1) * n / 23);
+        }
+    }
+    // T.C -> O(1)
+    // S.C -> O(1) 
+    ```
+#### Find last digit of a number
+- INPUT -> n = 123
+- OUTPUT -> 3
+```java
+    package CIP;
+
+import java.util.Scanner;
+
+public class Test {
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter the term n : ");
+        int n = sc.nextInt();
+        // Mode operator with the negative values gives the negative result
+        // Thus, you must take the modulus of n or the final remainder
+        n=Math.abs(n);
+        System.out.println(n % 10);
+    }
+}
+```
+#### Binary Representation of Numbers (1–15)
+
+| Decimal | Binary  |
+|---------|---------|
+| 1       | 0001    |
+| 2       | 0010    |
+| 3       | 0011    |
+| 4       | 0100    |
+| 5       | 0101    |
+| 6       | 0110    |
+| 7       | 0111    |
+| 8       | 1000    |
+| 9       | 1001    |
+| 10      | 1010    |
+| 11      | 1011    |
+| 12      | 1100    |
+| 13      | 1101    |
+| 14      | 1110    |
+| 15      | 1111    |
+
+**Tip:** Memorizing these can make bitwise operations much faster in exams!
+```java
+    class GFG
+{
+    public static void main(String [ ] args) 
+    {
+        int x = 11 & 9;
+        int y = x ^ 3;
+        System.out.println( y | 12 );
+    }
+}
+
+```
+### Flow Control, Loops and function
+#### If Else Statements
 ```java
     package CIP;
 
 public class Test {
     public static void main(String[] args) {
 
-        int x = 5;
-        System.out.println(~x); // Output -6
+        int num = 2;
+        if (num > 1) {
+            System.out.println("Condition is true, this statement will get executed.");
+        } else {
+            System.out.println("If the condition is false, then this statement will be executed.");
+        }
     }
 }
-
 ```
+```java
+/*
+  Given a number n, we need to find out whether the number is odd or even.
+*/
+
+package CIP;
+
+import java.util.Scanner;
+
+public class Test {
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter the value of n : ");
+        int num = sc.nextInt();
+        if (num % 2 != 0) {
+            System.out.println("Number is Odd.");
+        } else {
+            System.out.println("Number is even.");
+        }
+        sc.close();
+    }
+}
+```
+- If there is one single statement after if then we can remove the curly brackets. But if there are multiple statements inside the if block then all the statements must be enclosed inside the curly brackets {}. Similarly, with else block.
+```java
+/*
+ Take an input from the user and print the sum of the natural numbers, if the user enters the negative number then show it as error that the user has entered the negative value.
+*/
+package CIP;
+
+import java.util.Scanner;
+
+public class Test {
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter the value of n : ");
+        int num = sc.nextInt();
+        if (num > 0) {
+            int sum = num * (num + 1) / 2;
+            System.out.println("Sum of " + num + " natural number is " + sum);
+        } else {
+            System.err.println("Negative values are not allowed.");
+        }
+        sc.close();
+    }
+}
+```
+- We can have an if statement without the else statement.
+```java
+/*
+ Decide if a number is 
+ 1. Positive Even
+ 2. Positive Odd
+ 3. Negative Even
+ 4. Negative Odd.
+ 5. Zero
+*/
+package CIP;
+
+import java.util.Scanner;
+
+public class Test {
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter the value of n : ");
+        int num = sc.nextInt();
+        if (num == 0) {
+            System.out.println("Zero");
+            sc.close();
+            return;
+        } else if (num > 0) {
+            System.out.print("Positive ");
+        } else if (num < 0) {
+            System.out.print("Negative ");
+        }
+        if (num % 2 == 0) {
+            System.out.println("Even");
+        } else {
+            System.out.println("Odd");
+        }
+        sc.close();
+    }
+}
+```
+
+
+
